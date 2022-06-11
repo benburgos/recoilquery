@@ -10,9 +10,9 @@ function Counter(props) {
 
   return (
     <div>
-      <h1>With useState</h1>
+      <h1>With useState - {oldCounter}</h1>
       <button onClick={() => setOldCounter(oldCounter + 1)}>Add One</button>
-      <h1>With useRecoilState</h1>
+      <h1>With useRecoilState - {counter}</h1>
       <button onClick={() => setCounter(counter + 1)}>Add One</button>
     </div>
   );
