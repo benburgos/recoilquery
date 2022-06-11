@@ -1,12 +1,11 @@
-import { counterState } from '../atom';
-import { useRecoilState } from 'recoil';
+import { useCounterState } from '../atom';
 import { useState } from 'react';
 
 function Counter(props) {
   // declare a new piece of state (old way)
   const [oldCounter, setOldCounter] = useState(0);
   // bring in the state from the atom
-  const [counter, setCounter] = useRecoilState(counterState);
+  const [counter, setCounter] = useCounterState()
 
   return (
     <div>
