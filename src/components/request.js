@@ -25,8 +25,8 @@ function Request() {
       <div>
         <h1>Request Succeded</h1>
         <ul>
-          {Object.keys(data).map((key) => (
-            <li>
+          {Object.keys(data).map((key, index) => (
+            <li key={index}>
               {key}: {data[key]}
             </li>
           ))}
