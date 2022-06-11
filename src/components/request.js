@@ -1,23 +1,39 @@
-import { useQuery } from 'react-query';
+import { useJsonPlaceholder } from '../queryhooks';
 
 function Request() {
   // make our query
-  const { isSuccess, isError, isLoading, data, refetch } = useQuery(
-    'myQuery',
-    async () => {
-      const r = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-      return r.json();
-    }
-  );
+  const { isSuccess, isError, isLoading, data, refetch } = useJsonPlaceholder();
 
   if (isError) {
-    return <h1>Error</h1>;
+    return (
+      <div>
+        <h1>Request Failed</h1>
+        <button onClick={() => refetch()}>Try Again</button>
+      </div>
+    );
   }
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return (
+      <div>
+        <h1>Loading</h1>
+        <button onClick={() => refetch()}>Try Again</button>
+      </div>
+    );
   }
   if (isSuccess) {
-    return <h1>Success</h1>;
+    return (
+      <div>
+        <h1>Request Succeded</h1>
+        <ul>
+          {Object.keys(data).map((key) => (
+            <li>
+              {key}: {data[key]}
+            </li>
+          ))}
+        </ul>
+        <button onClick={() => refetch()}>Try Again</button>
+      </div>
+    );
   }
 }
 
